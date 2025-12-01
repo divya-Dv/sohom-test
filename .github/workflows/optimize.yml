@@ -10,6 +10,12 @@ on:
 jobs:
   optimize:
     runs-on: ubuntu-latest
+    
+    # Define a default working directory for all steps that handle the optimized content.
+    # This ensures consistency and correctness of relative paths (like 'js/convert-webp.js').
+    defaults:
+      run:
+        working-directory: ${{ github.workspace }}
 
     steps:
       - name: Checkout code
@@ -31,14 +37,13 @@ jobs:
           npm install --save-dev html-minifier-terser clean-css-cli terser purgecss
           npm install @squoosh/cli@0.7.1
 
-      - name: Create optimized directory
-        run: mkdir -p optimized
-
-      - name: Copy files to optimized directory
+      - name: Create and Populate optimized directory
         run: |
-          cp -r * optimized/ 2>/dev/null || true
-          cd optimized
-          rm -rf .git .github
+          mkdir -p optimized
+          # Copy all contents (excluding hidden files and the 'optimized' folder itself)
+          # into the new 'optimized' directory.
+          cp -r $(ls -A | grep -v 'optimized') optimized/ 2>/dev/null || true
+          rm -rf optimized/.git optimized/.github
 
       # -------------------------
       # IMAGE OPTIMIZATION
@@ -46,30 +51,35 @@ jobs:
 
       - name: Generate Responsive Images
         run: node js/resize-images.js
+        working-directory: optimized
 
       - name: Convert Images to WebP
         run: node js/convert-webp.js
+        working-directory: optimized
 
       # -------------------------
       # GZIP ASSETS
       # -------------------------
-      # - name: Gzip CSS and JS
-      #   run: |
-      #     find optimized/css optimized/js -type f \( -name "*.css" -o -name "*.js" \) -exec gzip -kf {} \; || true
+      - name: Gzip CSS and JS
+        run: |
+          find css js -type f \( -name "*.css" -o -name "*.js" \) -exec gzip -kf {} \; || true
+        working-directory: optimized
 
       # -------------------------
       # REPORT
       # -------------------------
       - name: Create optimization report
         run: |
-          cd optimized
           echo "# Website Optimization Report" > optimization-report.md
           echo "Generated: $(date)" >> optimization-report.md
           echo "" >> optimization-report.md
           echo "## File Counts" >> optimization-report.md
-          echo "- CSS: $(find css -name '*.css' | wc -l)" >> optimization-report.md
-          echo "- JS: $(find js -name '*.js' | wc -l)" >> optimization-report.md
-          echo "- Images: $(find images -type f | wc -l)" >> optimization-report.md
+          # Pipe errors to /dev/null to suppress 'No such file or directory' warnings
+          echo "- CSS: $(find css -name '*.css' 2>/dev/null | wc -l)" >> optimization-report.md
+          echo "- JS: $(find js -name '*.js' 2>/dev/null | wc -l)" >> optimization-report.md
+          echo "- Images: $(find images -type f 2>/dev/null | wc -l)" >> optimization-report.md
+        working-directory: optimized
+
 
       # -------------------------
       # PUSH TO optimized BRANCH
