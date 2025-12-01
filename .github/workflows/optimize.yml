@@ -10,14 +10,17 @@ on:
 jobs:
   optimize:
     runs-on: ubuntu-latest
+
+  permissions:
+      contents: write
     
     # Define a default working directory for all steps that handle the optimized content.
     # This ensures consistency and correctness of relative paths (like 'js/convert-webp.js').
-    defaults:
+  defaults:
       run:
         working-directory: ${{ github.workspace }}
 
-    steps:
+  steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
