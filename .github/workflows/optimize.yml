@@ -10,8 +10,7 @@ on:
 jobs:
   optimize:
     runs-on: ubuntu-latest
-
-  permissions:
+    permissions:
       contents: write
     
     # Define a default working directory for all steps that handle the optimized content.
