@@ -73,22 +73,22 @@ gtag('config', 'G-N1VLL3H1T8');
  <meta property="og:type" content="website">
  <meta property="og:title" content="Sohom UPVC Doors & Windows - Sleek & Strong!">
  <meta property="og:url" content="https://blendcolours.com/">
- <meta property="og:image" content="https://sohom.in/wp-content/uploads/2020/02/36963_124120267630917_3312577_n.jpg">
+ <meta property="og:image" content="wp-content/uploads/2020/02/36963_124120267630917_3312577_n.jpg">
  <meta property="og:description"
      content="Deceuninck uPVC Doors and Windows Systems. Sohom offers world-class sliding, Bi-Fold, Lift and Slide, and casement. Buy the best products with us now.">
 
 
  <style data-type="vc_shortcodes-custom-css">
 .vc_custom_1599919214811 {
-    background-image: url(../wp-content/uploads/2020/02/img_178537c3.jpg?id=578) !important;
+    background-image: url(wp-content/uploads/2020/02/img_178537c3.jpg?id=578) !important;
 }
 
 .vc_custom_1599919019033 {
-    background-image: url(https://sohom.in/wp-content/uploads/2018/12/business-numbers.jpg?id=256) !important;
+    background-image: url(wp-content/uploads/2018/12/business-numbers.jpg?id=256) !important;
 }
 
 .vc_custom_1577903791880 {
-    background-image: url(https://sohom.in/wp-content/uploads/2018/12/video-bg-2.jpg?id=486) !important;
+    background-image: url(wp-content/uploads/2018/12/video-bg-2.jpg?id=486) !important;
 }
 
 .vc_custom_1577903800657 {
@@ -604,7 +604,7 @@ body {
      content="Powered by Slider Revolution 6.1.5 - responsive, Mobile-Friendly Slider Plugin for WordPress with comfortable drag and drop interface." >
 
  <meta name="msapplication-TileImage"
-     content="https://sohom.in/wp-content/uploads/2020/07/cropped-image2-1-270x270.png" >
+     content="wp-content/uploads/2020/07/cropped-image2-1-270x270.png" >
  <script>
 function setREVStartSize(t) {
     try {
