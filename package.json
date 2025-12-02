@@ -11,8 +11,6 @@
     "build": "npm run optimize",
     "test:performance": "npm run lhci",
     "optimize:images": "node js/optimize-images.js",
-    "optimize:css": "node js/optimize-css.js",
-    "optimize:js": "node js/optimize-js.js",
     "add:lazyload": "node js/add-lazyload.js",
     "generate-lockfile": "node generate-lockfile.js"
   },
@@ -42,7 +40,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/KommineniCharan/emnar.git"
+    "url": "https://github.com/divya-Dv/sohom-test.git"
   },
   "keywords": [
     "website-optimization",

@@ -152,9 +152,9 @@ jobs:
       - name: Add width and height attributes to images
         run: node js/add-img-dimensions.js
 
-      - name: Gzip CSS and JS assets
-        run: |
-          find optimized/css optimized/js -type f \( -iname "*.css" -o -iname "*.js" \) -exec gzip -kf {} \;
+      # - name: Gzip CSS and JS assets
+      #   run: |
+      #     find optimized/css optimized/js -type f \( -iname "*.css" -o -iname "*.js" \) -exec gzip -kf {} \;
 
       - name: Create optimization report
         run: |
